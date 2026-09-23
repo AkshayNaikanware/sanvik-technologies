@@ -7,7 +7,7 @@ const nextConfig = {
     unoptimized: true,
   },
     output: "export",
-    basePath:"sanviktechnologies",
+    basePath:"/sanviktechnologies",
       images: {
     unoptimized: true,
   },
