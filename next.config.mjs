@@ -6,6 +6,11 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+    output: "export",
+    basePath:"sanviktechnologies",
+      images: {
+    unoptimized: true,
+  },
 }
 
 export default nextConfig
