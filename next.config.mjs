@@ -7,7 +7,7 @@ const nextConfig = {
     unoptimized: true,
   },
 
-  basePath: process.env.NODE_ENV === 'production' ? '/sanvik-technologies' : '',
-}
+  basePath: "/sanvik-technologies",
+};
 
-export default nextConfig
+export default nextConfig;
