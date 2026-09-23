@@ -1,5 +1,7 @@
-name: Deploy Next.js to GitHub Pages
-
+-name: Deploy Next.js to GitHub Pages
+ run: |
+ npm run build
+ touch ./out/.nojekyll
 on:
   push:
     branches: ["main"] # Triggers deployment when you push to the main branch
