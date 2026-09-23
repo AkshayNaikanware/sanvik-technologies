@@ -6,13 +6,8 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-    output: "export",
- basePath: '/sanvik-technologies',
-  assetPrefix: '/sanvik-technologies/',
-     trailingSlash: true,
-      images: {
-    unoptimized: true,
-  },
+
+  basePath: process.env.NODE_ENV === 'production' ? '/sanvik-technologies' : '',
 }
 
 export default nextConfig
