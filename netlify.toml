@@ -1,6 +1,9 @@
 [build]
-  command = "npm run build"
-  publish = ".next"
+  command = "npm install && npx tsc && npx vite build"
+  publish = "dist"
 
+# This ensures no Next.js background plugins try to take over the build process
 [[plugins]]
   package = "@netlify/plugin-nextjs"
+  [plugins.inputs]
+    disable = true
