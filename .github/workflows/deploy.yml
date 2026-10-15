@@ -1,0 +1,45 @@
+-name: Deploy Next.js to GitHub Pages
+ run: |
+ npm run build
+ touch ./out/.nojekyll
+on:
+  push:
+    branches: ["main"] # Triggers deployment when you push to the main branch
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-cache: "npm" # Change to 'yarn' or 'pnpm' if you use them
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build and Export Static Site
+        run: npm run build
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./out # Next.js exports static files to the 'out' directory
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
