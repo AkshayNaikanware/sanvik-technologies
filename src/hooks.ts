@@ -8,7 +8,11 @@ export function usePage(): [PageId, (p: PageId, anchor?: string) => void] {
   const [page, setPage] = useState<PageId>(parse);
 
   useEffect(() => {
-    const onHash = () => setPage(parse());
+    const onHash = () => {
+      // Only react to route hashes (#/students, #/industry).
+      // In-page anchors like #contact-section or #programs must NOT change the page.
+      if (window.location.hash.startsWith('#/')) setPage(parse());
+    };
     window.addEventListener('hashchange', onHash);
     return () => window.removeEventListener('hashchange', onHash);
   }, []);

@@ -21,7 +21,7 @@ export default function IndustryPage({ go }: { go: (p: PageId, anchor?: string) 
         id="top"
         photo={chipAi}
         photoAlt="Glowing AI microcontroller chip on a circuit board"
-        background={banner}            // CHANGED (was chipAi)
+        background={banner}
         backgroundOpacity={0.6}
         eyebrow="Embedded Solutions · Electronics Design · Industrial Automation"
         title={<>Embedded Solutions <span className="text-cyan">for Industry.</span></>}
@@ -35,9 +35,6 @@ export default function IndustryPage({ go }: { go: (p: PageId, anchor?: string) 
           { value: '6', label: 'Core Services' },
           { value: 'On-Time', label: 'Delivery' },
         ]}
-
-
-
       />
 
       <Section id="about">

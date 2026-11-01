@@ -30,13 +30,26 @@ interface Props {
 const handle = (cta: Cta) =>
   cta.onClick
     ? (e: MouseEvent<HTMLAnchorElement>) => {
-      e.preventDefault();
-      cta.onClick?.();
-    }
+        e.preventDefault();
+        cta.onClick?.();
+      }
     : undefined;
 
 /** Dark hero with copy on the left and a photo + stats card on the right. */
-export default function Hero({ id, eyebrow, title, lead, primary, secondary, badges, stats, photo, photoAlt, background, backgroundOpacity = 0.4, }: Props) {
+export default function Hero({
+  id,
+  eyebrow,
+  title,
+  lead,
+  primary,
+  secondary,
+  badges,
+  stats,
+  photo,
+  photoAlt,
+  background,
+  backgroundOpacity = 0.4,
+}: Props) {
   return (
     <section id={id} className="border-b border-white/10 bg-hero-glow">
       <PhotoBackground image={background} opacity={backgroundOpacity} className="py-[76px] pb-[84px]">
@@ -48,26 +61,33 @@ export default function Hero({ id, eyebrow, title, lead, primary, secondary, bad
             </h1>
             <p className="mt-[18px] max-w-[540px] text-[17px] leading-[1.7] text-[#C7CEE8]">{lead}</p>
             <div className="mt-[30px] flex flex-wrap gap-3.5">
-              <Button href={primary.href} variant="cyan" onClick={handle(primary)}>{primary.label}</Button>
-              <Button href={secondary.href} variant="outline" onClick={handle(secondary)}>{secondary.label}</Button>
+              <Button href={primary.href} variant="cyan" onClick={handle(primary)}>
+                {primary.label}
+              </Button>
+              <Button href={secondary.href} variant="outline" onClick={handle(secondary)}>
+                {secondary.label}
+              </Button>
             </div>
             <div className="mt-[34px] flex flex-wrap gap-2.5">
               {badges.map((b) => (
-                <span key={b} className="rounded-full border border-white/20 bg-white/5 px-3.5 py-[7px] text-[12.5px] font-semibold text-[#DCE2F5]">
+                <span
+                  key={b}
+                  className="rounded-full border border-white/20 bg-white/5 px-3.5 py-[7px] text-[12.5px] font-semibold text-[#DCE2F5]"
+                >
                   {b}
                 </span>
               ))}
             </div>
           </div>
-          {/* 
-          <div className="rounded-[18px] border border-white/15 bg-gradient-to-br from-brand/35 to-cyan/10 p-7">
-            <img src={photo} alt={photoAlt} className="mb-4 w-full rounded-xl" />
-            <div className="grid grid-cols-2 gap-3.5">
+
+          <div className="rounded-2xl border border-white/10 bg-white/5 p-3.5 backdrop-blur-sm">
+            <img src={photo} alt={photoAlt} className="aspect-[16/10] w-full rounded-xl object-cover" />
+            <div className="mt-3.5 grid grid-cols-2 gap-3.5">
               {stats.map((s) => (
-                <StatTile key={s.label} {...s} />
+                <StatTile key={s.label} value={s.value} label={s.label} />
               ))}
             </div>
-          </div> */}
+          </div>
         </Container>
       </PhotoBackground>
     </section>
