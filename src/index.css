@@ -7,7 +7,30 @@
     scroll-behavior: smooth;
     scroll-padding-top: 76px;
   }
+
+  /* ADD: hide the page scrollbar (scrolling still works) */
+  html,
+  body {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  html::-webkit-scrollbar,
+  body::-webkit-scrollbar {
+    display: none;
+  }
+
   body {
     @apply bg-white font-sans text-ink antialiased;
+  }
+}
+
+/* ADD at the end of the file */
+@layer utilities {
+  .no-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
   }
 }

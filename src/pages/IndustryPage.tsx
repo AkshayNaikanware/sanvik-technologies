@@ -10,6 +10,7 @@ import StatTile from '../components/ui/StatTile';
 import type { PageId } from '../types';
 import { services, whyUs } from '../data/content';
 import chipAi from '../assets/chip-ai.jpg';
+import banner from '../assets/banner.jpg';
 import about from '../assets/about.jpg';
 import servicesImg from '../assets/services.jpg';
 
@@ -18,6 +19,10 @@ export default function IndustryPage({ go }: { go: (p: PageId, anchor?: string) 
     <main>
       <Hero
         id="top"
+        photo={chipAi}
+        photoAlt="Glowing AI microcontroller chip on a circuit board"
+        background={banner}            // CHANGED (was chipAi)
+        backgroundOpacity={0.6}
         eyebrow="Embedded Solutions · Electronics Design · Industrial Automation"
         title={<>Embedded Solutions <span className="text-cyan">for Industry.</span></>}
         lead="From idea to real-world product — Sanvik Technologies designs and builds custom electronics, IoT devices and industrial automation systems for industry, research and education."
@@ -30,9 +35,9 @@ export default function IndustryPage({ go }: { go: (p: PageId, anchor?: string) 
           { value: '6', label: 'Core Services' },
           { value: 'On-Time', label: 'Delivery' },
         ]}
-        photo={chipAi}
-        photoAlt="Glowing AI microcontroller chip on a circuit board"
-        background={chipAi}
+
+
+
       />
 
       <Section id="about">

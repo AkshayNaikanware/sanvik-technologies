@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Hero from '../components/sections/Hero';
 import CourseCard from '../components/sections/CourseCard';
 import Section from '../components/ui/Section';
@@ -5,10 +6,13 @@ import SectionHeading from '../components/ui/SectionHeading';
 import Kicker from '../components/ui/Kicker';
 import Button from '../components/ui/Button';
 import { courses, CONTACT } from '../data/content';
+import StudentEnquiryModal from '../components/sections/StudentEnquiryModal';
 import circuit from '../assets/circuit.jpg';
 import hiring from '../assets/hiring.jpg';
 
 export default function StudentsPage() {
+  const [enquiryOpen, setEnquiryOpen] = useState(false);
+
   return (
     <main>
       <Hero
@@ -17,7 +21,7 @@ export default function StudentsPage() {
         title={<>Learn. Build. Innovate. <span className="text-cyan">Shape Your Future.</span></>}
         lead="Hands-on training in embedded systems, PCB design, IoT and robotics — taught by engineers who build real industrial products."
         primary={{ label: 'Explore Courses', href: '#programs' }}
-        secondary={{ label: 'Talk to Us', href: '#contact-section' }}
+        secondary={{ label: 'Talk to Us', href: '#contact-section', onClick: () => setEnquiryOpen(true) }}
         badges={['100% Job Placement Support', '15+ Capstone Projects', 'Diploma · BE · ME Guidance']}
         stats={[
           { value: '6+', label: 'Training Programs' },
@@ -58,6 +62,7 @@ export default function StudentsPage() {
           </div>
         </div>
       </Section>
+      <StudentEnquiryModal open={enquiryOpen} onClose={() => setEnquiryOpen(false)} />
     </main>
   );
 }

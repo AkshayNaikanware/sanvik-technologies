@@ -26,7 +26,7 @@ export default function Modal({ open, onClose, label, children }: Props) {
         role="dialog"
         aria-modal="true"
         aria-label={label}
-        className="relative max-h-[90vh] w-full max-w-[420px] overflow-y-auto rounded-[18px] bg-white"
+        className="relative max-h-[90vh] w-full max-w-[420px] no-scrollbar overflow-y-auto rounded-[18px] bg-white"
       >
         <button
           aria-label="Close"
